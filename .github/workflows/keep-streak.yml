@@ -2,7 +2,10 @@ name: Keep GitHub streak active
 
 on:
   schedule:
-    - cron: "17 3 * * *"
+    - cron: "17 0 * * *"
+    - cron: "17 6 * * *"
+    - cron: "17 12 * * *"
+    - cron: "17 18 * * *"
   workflow_dispatch:
 
 permissions:
@@ -20,7 +23,7 @@ jobs:
         run: |
           mkdir -p .github/streak
           printf '%s\n' "${{ github.run_started_at }}" > .github/streak/last-activity.txt
-          printf '%s\n' "Automated daily activity marker." > .github/streak/README.md
+          printf '%s\n' "Automated activity marker." > .github/streak/README.md
 
       - name: Commit activity
         shell: bash
@@ -28,5 +31,5 @@ jobs:
           git config user.name "Lord-shaban"
           git config user.email "a.shaban2366@nu.edu.eg"
           git add .github/streak
-          git diff --cached --quiet || git commit -m "chore: daily activity"
+          git diff --cached --quiet || git commit -m "chore: automated activity"
           git push
