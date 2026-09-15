@@ -1,1 +1,1 @@
-Automated daily activity marker.
+Automated activity marker.
