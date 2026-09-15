@@ -18,18 +18,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Record daily activity
+      - name: Record activity
         shell: bash
         run: |
           mkdir -p .github/streak
-          printf '%s\n' "${{ github.run_started_at }}" > .github/streak/last-activity.txt
-          printf '%s\n' "Automated activity marker." > .github/streak/README.md
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/streak/last-activity.txt
+          echo "Automated activity marker." > .github/streak/README.md
 
       - name: Commit activity
         shell: bash
         run: |
           git config user.name "Lord-shaban"
-          git config user.email "a.shaban2366@nu.edu.eg"
+          git config user.email "189514970+Lord-shaban@users.noreply.github.com"
           git add .github/streak
           git diff --cached --quiet || git commit -m "chore: automated activity"
           git push
